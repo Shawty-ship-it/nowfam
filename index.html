@@ -41,6 +41,18 @@
 <h1>the moment,<br />not the highlight reel.</h1>
 <p class="muted">nowfam is a friends-only photo app. share what you’re actually doing, right now, with the friends who actually care. no public profiles, no strangers, no follower counts.</p>
 <div class="card">📲 coming soon to iPhone. friends are testing it now.</div>
+<div class="card" id="reset" hidden><strong>resetting your password?</strong><br /><a id="reset-open" href="#">open nowfam</a> to pick a new one. on a computer? open the email on your phone, or type the code from the email in the app.</div>
+<script>
+  // A reset link that lands here (Supabase's fallback address) gets passed on to the app.
+  (function () {
+    var hash = location.hash;
+    if (!/(?:^#|&)(?:type=recovery|error_code=)/.test(hash)) return;
+    var url = 'nowfam://reset-password' + hash;
+    document.getElementById('reset').hidden = false;
+    document.getElementById('reset-open').href = url;
+    location.href = url;
+  })();
+</script>
 </main>
 <footer>© 2026 Nathaniel Shaw · <a href="mailto:shaw.nate42@gmail.com">shaw.nate42@gmail.com</a></footer>
 </div>
